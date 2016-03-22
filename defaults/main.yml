@@ -1,0 +1,19 @@
+docker_container_name: hello-world
+docker_container_image: hello-world
+
+docker_container_memory_limit: 512MB
+docker_container_net: default
+
+docker_container_expose: []
+docker_container_ports: []
+
+docker_container_directory_volumes: []
+docker_container_file_volumes: []
+docker_container_volumes: "{{ docker_container_directory_volumes + docker_container_file_volumes }}"
+docker_container_env: {}
+docker_container_links: []
+docker_container_log_driver: syslog
+docker_container_log_opt:
+  syslog-facility: local0
+  syslog-tag: "{{ docker_container_name }}"
+docker_api_version: 1.21

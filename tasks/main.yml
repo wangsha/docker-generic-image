@@ -1,0 +1,53 @@
+- name: Ensure docke volume mapping host directories exist
+  file:
+    state: directory
+    path: "{{ item | regex_replace('^(?P<host>.+):(?P<container>.+):(?P<mode>.+)', '\\g<host>') }}"
+  with_items:
+    - "{{ docker_container_directory_volumes }}"
+  tags:
+    - install
+    - upgrade
+
+
+- name: Ensure docker volume mapping host file directories exist
+  file:
+    state: directory
+    path: "{{ item | regex_replace('^(?P<host>.+):(?P<container>.+):(?P<mode>.+)', '\\g<host>') | dirname }}"
+  with_items:
+    - "{{ docker_container_file_volumes }}"
+  tags:
+    - install
+    - upgrade
+
+
+- name: Copy docker volume mapping host file
+  template:
+    src="{{ docker_container_template_path }}{{ item | regex_replace('^(?P<host>.+):(?P<container>.+):(?P<mode>.+)', '\\g<host>') | basename }}.j2"
+    dest="{{ item | regex_replace('^(?P<host>.+):(?P<container>.+):(?P<mode>.+)', '\\g<host>') }}"
+    mode='0644'
+  with_items:
+    - "{{ docker_container_file_volumes }}"
+  tags:
+    - install
+    - upgrade
+
+
+- name: Run docker container container
+  docker:
+    docker_api_version: "{{ docker_api_version }}"
+    env: "{{ docker_container_env }}"
+    expose: "{{ docker_container_expose }}"
+    image: "{{ docker_container_image }}"
+    name: "{{ docker_container_name }}"
+    ports: "{{ docker_container_ports }}"
+    links: "{{ docker_container_links }}"
+    volumes: "{{ docker_container_volumes }}"
+    memory_limit: "{{ docker_container_memory_limit }}"
+    log_driver: "{{ docker_container_log_driver }}"
+    log_opt: "{{ docker_container_log_opt }}"
+    pull: always
+    restart_policy: always
+    state: reloaded
+  tags:
+    - install
+    - upgrade
