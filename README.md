@@ -28,9 +28,9 @@ Use it in a playbook as follows, assuming you already have docker setup:
     - role: angstwad.docker_ubuntu
       become: true
     - role: wangsha.docker-generic-image
+      become: true
       docker_container_name: hello-world
       docker_container_image: hello-world
-      become: true
 ```
 
 Have a look at the [defaults/main.yml](defaults/main.yml) for role variables
