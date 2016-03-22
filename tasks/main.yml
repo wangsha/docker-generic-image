@@ -32,6 +32,17 @@
     - upgrade
 
 
+- name: login to docker-registry
+  docker_login:
+    registry: "{{ docker_registry }}"
+    username: "{{ docker_registry_username }}"
+    password: "{{ docker_registry_password }}"
+    email: "{{ docker_registry_email }}"
+  when: docker_registry_login
+  tags:
+    - install
+    - upgrade
+
 - name: Run docker container container
   docker:
     docker_api_version: "{{ docker_api_version }}"
