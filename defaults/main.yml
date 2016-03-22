@@ -2,6 +2,7 @@ docker_container_name: hello-world
 docker_container_image: hello-world
 
 docker_registry_login: no
+docker_registry: your_registry_host
 docker_registry_username: your_dockerhub_username
 docker_registry_password: your_dockerhub_password
 docker_registry_email: your_dockerhub_email
