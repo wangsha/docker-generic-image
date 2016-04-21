@@ -18,6 +18,7 @@ docker_container_file_volumes: []
 docker_container_volumes: "{{ docker_container_directory_volumes + docker_container_file_volumes }}"
 docker_container_env: {}
 docker_container_links: []
+docker_container_always_pull_image: true
 docker_container_log_driver: syslog
 docker_container_log_opt:
   syslog-facility: local0
