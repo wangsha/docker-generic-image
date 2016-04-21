@@ -56,9 +56,9 @@ To copy template from your own ansible diretories, set `docker_generic-image_tem
 
 Example Config:
 ```yaml
-docker_generic-image_file_volumes:
+docker_container_file_volumes:
   - '/opt/myapp/conf/settings.conf:/etc/myapp/conf/settings.conf:ro'
-docker_generic-image_template_path: /path/to/ansible/project/templates
+docker_container_template_path: /path/to/ansible/project/templates
 # make sure file /path/to/ansible/project/templates/settings.conf.j2 exists. 
 ```
 

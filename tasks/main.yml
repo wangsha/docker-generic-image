@@ -43,7 +43,29 @@
     - install
     - upgrade
 
-- name: Run docker container container
+- name: Run docker {{ docker_container_image }} with {{ docker_container_command }}
+  docker:
+    docker_api_version: "{{ docker_api_version }}"
+    env: "{{ docker_container_env }}"
+    command: "{{ docker_container_command }}"
+    expose: "{{ docker_container_expose }}"
+    image: "{{ docker_container_image }}"
+    name: "{{ docker_container_name }}"
+    ports: "{{ docker_container_ports }}"
+    links: "{{ docker_container_links }}"
+    volumes: "{{ docker_container_volumes }}"
+    memory_limit: "{{ docker_container_memory_limit }}"
+    log_driver: "{{ docker_container_log_driver }}"
+    log_opt: "{{ docker_container_log_opt }}"
+    pull: "{{ docker_container_always_pull_image }}"
+    restart_policy: always
+    state: reloaded
+  when: docker_container_command is defined
+  tags:
+    - install
+    - upgrade
+
+- name: Run docker {{ docker_container_image }}
   docker:
     docker_api_version: "{{ docker_api_version }}"
     env: "{{ docker_container_env }}"
@@ -56,9 +78,10 @@
     memory_limit: "{{ docker_container_memory_limit }}"
     log_driver: "{{ docker_container_log_driver }}"
     log_opt: "{{ docker_container_log_opt }}"
-    pull: always
+    pull: "{{ docker_container_always_pull_image }}"
     restart_policy: always
     state: reloaded
+  when: docker_container_command is undefined
   tags:
     - install
     - upgrade
