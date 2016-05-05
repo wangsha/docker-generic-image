@@ -43,9 +43,10 @@
     - install
     - upgrade
 
-- name: Run docker {{ docker_container_image }} with {{ docker_container_command }}
+- name: Run docker {{ docker_container_image|default("") }} with {{ docker_container_command|default("") }}
   docker:
     docker_api_version: "{{ docker_api_version }}"
+    docker_user: "{{ docker_user }}"
     env: "{{ docker_container_env }}"
     command: "{{ docker_container_command }}"
     expose: "{{ docker_container_expose }}"
@@ -68,6 +69,7 @@
 - name: Run docker {{ docker_container_image }}
   docker:
     docker_api_version: "{{ docker_api_version }}"
+    docker_user: "{{ docker_user }}"
     env: "{{ docker_container_env }}"
     expose: "{{ docker_container_expose }}"
     image: "{{ docker_container_image }}"

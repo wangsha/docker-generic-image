@@ -58,8 +58,8 @@ Example Config:
 ```yaml
 docker_container_file_volumes:
   - '/opt/myapp/conf/settings.conf:/etc/myapp/conf/settings.conf:ro'
-docker_container_template_path: /path/to/ansible/project/templates
-# make sure file /path/to/ansible/project/templates/settings.conf.j2 exists. 
+docker_container_template_path: /path/to/ansible/project/templates/
+# make sure file /path/to/ansible/project/templates//settings.conf.j2 exists. 
 ```
 
 Additional References
