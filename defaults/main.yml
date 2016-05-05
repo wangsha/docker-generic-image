@@ -13,7 +13,7 @@ docker_container_net: default
 docker_container_expose: []
 docker_container_ports: []
 
-docker_user: root
+docker_user: ""
 docker_container_directory_volumes: []
 docker_container_file_volumes: []
 docker_container_template_path: ""
