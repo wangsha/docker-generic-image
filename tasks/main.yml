@@ -32,7 +32,7 @@
     - upgrade
 
 
-- name: login to docker-registry
+- name: login to registry {{ docker_registry | default("docker.io") }}
   docker_login:
     registry: "{{ docker_registry }}"
     username: "{{ docker_registry_username }}"
@@ -42,6 +42,18 @@
   tags:
     - install
     - upgrade
+
+
+- name: Remove existing {{ docker_container_name }} container
+  docker:
+    docker_api_version: "{{ docker_api_version }}"
+    image: "{{ docker_container_image }}"
+    name: "{{ docker_container_name }}"
+    state: absent
+  tags:
+    - install
+    - upgrade
+
 
 - name: Run docker {{ docker_container_image|default("") }} with {{ docker_container_command|default("") }}
   docker:
