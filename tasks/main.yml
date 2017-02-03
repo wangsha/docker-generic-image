@@ -50,6 +50,7 @@
     image: "{{ docker_container_image }}"
     name: "{{ docker_container_name }}"
     state: absent
+  ignore_errors: yes
   tags:
     - install
     - upgrade
