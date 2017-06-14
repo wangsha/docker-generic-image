@@ -20,9 +20,9 @@ docker_container_template_path: ""
 docker_container_volumes: "{{ docker_container_directory_volumes + docker_container_file_volumes }}"
 docker_container_env: {}
 docker_container_links: []
-docker_container_pull_image: always
+docker_container_pull_image: yes
 docker_container_log_driver: syslog
+docker_container_command: ""
 docker_container_log_opt:
   syslog-facility: local0
   tag: "{{ docker_container_name }}"
-docker_api_version: 1.21

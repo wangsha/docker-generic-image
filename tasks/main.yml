@@ -45,8 +45,7 @@
 
 
 - name: Remove existing {{ docker_container_name }} container
-  docker:
-    docker_api_version: "{{ docker_api_version }}"
+  docker_container:
     image: "{{ docker_container_image }}"
     name: "{{ docker_container_name }}"
     state: absent
@@ -57,18 +56,17 @@
 
 
 - name: Run docker {{ docker_container_image|default("") }} with {{ docker_container_command|default("") }}
-  docker:
-    docker_api_version: "{{ docker_api_version }}"
-    docker_user: "{{ docker_user }}"
+  docker_container:
+    user: "{{ docker_user }}"
     env: "{{ docker_container_env }}"
     command: "{{ docker_container_command }}"
-    expose: "{{ docker_container_expose }}"
+    exposed_ports: "{{ docker_container_expose }}"
     image: "{{ docker_container_image }}"
     name: "{{ docker_container_name }}"
-    ports: "{{ docker_container_ports }}"
+    published_ports: "{{ docker_container_ports }}"
     links: "{{ docker_container_links }}"
     volumes: "{{ docker_container_volumes }}"
-    memory_limit: "{{ docker_container_memory_limit }}"
+    memory: "{{ docker_container_memory_limit }}"
     log_driver: "{{ docker_container_log_driver }}"
     log_opt: "{{ docker_container_log_opt }}"
     pull: "{{ docker_container_pull_image }}"
@@ -80,17 +78,16 @@
     - upgrade
 
 - name: Run docker {{ docker_container_image }}
-  docker:
-    docker_api_version: "{{ docker_api_version }}"
+  docker_container:
     docker_user: "{{ docker_user }}"
     env: "{{ docker_container_env }}"
-    expose: "{{ docker_container_expose }}"
+    exposed_ports: "{{ docker_container_expose }}"
     image: "{{ docker_container_image }}"
     name: "{{ docker_container_name }}"
-    ports: "{{ docker_container_ports }}"
+    published_ports: "{{ docker_container_ports }}"
     links: "{{ docker_container_links }}"
     volumes: "{{ docker_container_volumes }}"
-    memory_limit: "{{ docker_container_memory_limit }}"
+    memory: "{{ docker_container_memory_limit }}"
     log_driver: "{{ docker_container_log_driver }}"
     log_opt: "{{ docker_container_log_opt }}"
     pull: "{{ docker_container_pull_image }}"
