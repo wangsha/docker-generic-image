@@ -71,7 +71,6 @@
     log_opt: "{{ docker_container_log_opt }}"
     pull: "{{ docker_container_pull_image }}"
     restart_policy: always
-    state: reloaded
   when: docker_container_command is defined
   tags:
     - install
