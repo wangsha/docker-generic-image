@@ -95,3 +95,11 @@
   tags:
     - install
     - upgrade
+    
+  
+- name: Cleanup unused docker resources
+  shell: "docker system prune -f"
+  ignore_errors: True
+  tags:
+    - install
+    - upgrade
