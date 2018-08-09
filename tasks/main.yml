@@ -65,6 +65,7 @@
     name: "{{ docker_container_name }}"
     published_ports: "{{ docker_container_ports }}"
     links: "{{ docker_container_links }}"
+    network_mode: "{{ docker_container_network_mode }}"
     volumes: "{{ docker_container_volumes }}"
     memory: "{{ docker_container_memory_limit }}"
     log_driver: "{{ docker_container_log_driver }}"
