@@ -88,6 +88,7 @@
     volumes: "{{ docker_container_volumes }}"
     memory: "{{ docker_container_memory_limit }}"
     log_driver: "{{ docker_container_log_driver }}"
+    network_mode: "{{ docker_container_network_mode }}"
     log_opt: "{{ docker_container_log_opt }}"
     pull: "{{ docker_container_pull_image }}"
     restart_policy: always
