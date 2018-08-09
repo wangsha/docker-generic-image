@@ -92,12 +92,12 @@ galaxy_info:
   #  - 9.3
     - name: Ubuntu
       versions:
-  #  - all
+     - all
   #  - lucid
   #  - maverick
   #  - natty
   #  - oneiric
-       - precise
+  #  - precise
   #  - quantal
   #  - raring
   #  - saucy
@@ -127,24 +127,6 @@ galaxy_info:
   #  - squeeze
   #  - wheezy
   #
-  # Below are all categories currently available. Just as with
-  # the platforms above, uncomment those that apply to your role.
-  #
-  categories:
-  - cloud
-  #- cloud:ec2
-  #- cloud:gce
-  #- cloud:rax
-  #- clustering
-  #- database
-  #- database:nosql
-  #- database:sql
-  - development
-  - monitoring
-  #- networking
-  #- packaging
-  - system
-  #- web
   galaxy_tags:
     - docker
 dependencies: []
