@@ -27,3 +27,4 @@ docker_container_command: ""
 docker_container_log_opt:
   syslog-facility: local0
   tag: "{{ docker_container_name }}"
+ansible_command_environment: {}
