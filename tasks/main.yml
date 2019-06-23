@@ -72,6 +72,7 @@
     log_opt: "{{ docker_container_log_opt }}"
     pull: "{{ docker_container_pull_image }}"
     restart_policy: always
+  environment: "{{ ansible_command_environment }}"
   when: docker_container_command is defined
   tags:
     - install
@@ -93,6 +94,7 @@
     log_opt: "{{ docker_container_log_opt }}"
     pull: "{{ docker_container_pull_image }}"
     restart_policy: always
+  environment: "{{ ansible_command_environment }}"
   when: docker_container_command is undefined
   tags:
     - install
