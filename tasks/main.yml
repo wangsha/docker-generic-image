@@ -33,8 +33,8 @@
 
 
 - name: login to registry {{ docker_registry | default("docker.io") }}
-  docker_login:
-    registry: "{{ docker_registry }}"
+  community.docker.docker_login:
+    registry_url: "{{ docker_registry }}"
     username: "{{ docker_registry_username }}"
     password: "{{ docker_registry_password }}"
     email: "{{ docker_registry_email }}"
@@ -45,7 +45,7 @@
 
 
 - name: Remove existing {{ docker_container_name }} container
-  docker_container:
+  community.docker.docker_container:
     image: "{{ docker_container_image }}"
     name: "{{ docker_container_name }}"
     state: absent
@@ -56,7 +56,7 @@
 
 
 - name: Run docker {{ docker_container_image|default("") }} with {{ docker_container_command|default("") }}
-  docker_container:
+  community.docker.docker_container:
     user: "{{ docker_user }}"
     env: "{{ docker_container_env }}"
     command: "{{ docker_container_command }}"
@@ -79,7 +79,7 @@
     - upgrade
 
 - name: Run docker {{ docker_container_image }}
-  docker_container:
+  community.docker.docker_container:
     docker_user: "{{ docker_user }}"
     env: "{{ docker_container_env }}"
     exposed_ports: "{{ docker_container_expose }}"
